@@ -1,34 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mesa de Ayuda - Tótem Técnico</title>
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <div class="contenedor-totem">
-        <header class="encabezado">
-            <h1> Mesa de ayuda técnica</h1>
-            <p>¿Alguna netbook tiene una falla? Reportála acá para poder revisarla.</p>
 
+    <main class="contenedor-totem">
+        <header class="encabezado">
+            <h1>Mesa de Ayuda Técnica</h1>
+            <p>¿Alguna netbook tiene una falla? Reportala acá para poder revisarla.</p>
         </header>
-        <main class="tarjeta-formulario">
+
+        <section class="tarjeta-formulario">
             <form id="form-ticket">
                 <div class="campo-grupo">
-                    <label for="descripcion"> Describí el problema detalladamente:</label>
-                    <textarea
-                    id="descripcion"
-                    name="descripcion"
-                    placeholder="Ej: Netbook 5 de jefatura bloqueada o no conecta WI-FI..." required></textarea>
+                    <label for="descripcion">Describí el problema detalladamente:</label>
+                    <textarea 
+                        id="descripcion" 
+                        name="descripcion" 
+                        placeholder="Ej: Netbook 5 de jefatura bloqueada o no conecta a Wi-Fi..." 
+                        required></textarea>
                 </div>
-                <button type="submit" class="btn-enviar"> Enviar Reporte</button>
+                
+                <button type="submit" class="btn-enviar">
+                    <span>Enviar Reporte</span>
+                </button>
             </form>
-        </main>
-        <footer class="pie-pagina">
-            <p> Terminal de reportes - Equipo 3</p>
-        </footer>
-    </div>
-    <script src="app.js"></script>
+        </section>
+    </main>
+
 </body>
 </html>
