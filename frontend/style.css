@@ -89,14 +89,52 @@ select:focus, textarea:focus {
 
 .ticket-card {
     background: #f9f9f9;
-    border-left: 4px solid #3498db;
-    padding: 10px 15px;
-    margin-bottom: 10px;
+    border-left: 4px solid #e74c3c;
+    padding: 12px 15px;
+    margin-bottom: 12px;
     border-radius: 4px;
     font-size: 13px;
+    position: relative;
 }
 
-.ticket-card strong {
-    color: #333;
+.ticket-card.reparado {
+    border-left-color: #2ecc71;
+    background: #eafaf1;
 }
+
+.ticket-card.reparado .texto-descripcion {
+    text-decoration: line-through;
+    color: #7f8c8d;
+}
+
+.acciones-tarjeta {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-accion {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-estado {
+    background-color: #f39c12;
+    color: white;
+}
+
+.ticket-card.reparado .btn-estado {
+    background-color: #2ecc71;
+}
+
+.btn-eliminar {
+    background-color: #e74c3c;
+    color: white;
+}
+
+ 
 
