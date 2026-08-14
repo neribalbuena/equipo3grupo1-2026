@@ -16,20 +16,21 @@
                 <label for="tipo-elemento">Tipo de Elemento:</label>
                 <select id="tipo-elemento" name="tipo-elemento" required>
                     <option value="Notebook / Equipo">Notebook / Equipo</option>
-                    <option value="Instrumento Escolar">Instrumento Escolar (Rotura)</option>
+                    <option value="Instrumento Escolar">Instrumento Escolar</option>
+                    <option value="Libro">Libro</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="descripcion">Descripción de la falla:</label>
-                <textarea id="descripcion" name="descripcion" rows="4" placeholder="Ej: Pantalla rota, guitarra con clavija floja..." required></textarea>
+                <label for="descripcion">Descripcion de la falla:</label>
+                <textarea id="descripcion" name="descripcion" rows="4" placeholder="Ej: Pantalla rota, compu bloqueada, etc" required></textarea>
             </div>
             
             <button type="submit" class="btn-enviar">Guardar Reporte</button>
         </form>
 
         <div class="lista-reportes">
-            <h3>Elementos Rotos / Reportados</h3>
+            <h3>Elementos Rotos o reportados</h3>
             <!-- Aquí es donde JavaScript insertará dinámicamente cada tarjeta con sus botones -->
             <div id="contenedor-tickets"></div>
         </div>
