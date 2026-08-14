@@ -21,4 +21,7 @@ Algunas notebooks de la escuela tienen fallas y alumnos y profesores no tienen u
 ### 4. Curva S Actualizada
 * **Avance real actual:** ~20% del total.
 * Ya contamos con la base de datos estructurada, la conexión inicial programada y el frontend capturando datos con JavaScript. El proyecto marcha al día.
-*
+
+para entrar a la página desde internet acceder a:
+
+https://neribalbuena.github.io/equipo3grupo1-2026/frontend/
