@@ -8,19 +8,32 @@
 </head>
 <body>
     <div class="container">
-        <h2>Reportar Falla en Equipo</h2>
-        <p>Ingresá la descripción del problema detectado en el equipo.</p>
+        <h2>Reportar Falla o Rota</h2>
+        <p>Seleccioná el tipo de elemento e ingresá la descripción del problema.</p>
         
         <form id="form-ticket">
             <div class="form-group">
-                <label for="descripcion">Descripción de la falla:</label>
-                <textarea id="descripcion" name="descripcion" rows="4" placeholder="Ej: La notebook no enciende o la pantalla parpadea..." required></textarea>
+                <label for="tipo-elemento">Tipo de Elemento:</label>
+                <select id="tipo-elemento" name="tipo-elemento" required>
+                    <option value="Notebook / Equipo">Notebook / Equipo</option>
+                    <option value="Instrumento Escolar">Instrumento Escolar (Rotura)</option>
+                </select>
             </div>
-            <button type="submit" class="btn-enviar">Enviar Reporte</button>
+
+            <div class="form-group">
+                <label for="descripcion">Descripción de la falla:</label>
+                <textarea id="descripcion" name="descripcion" rows="4" placeholder="Ej: Pantalla rota, guitarra con clavija floja..." required></textarea>
+            </div>
+            
+            <button type="submit" class="btn-enviar">Guardar Reporte</button>
         </form>
+
+        <div class="lista-reportes">
+            <h3>Reportes Guardados Localmente</h3>
+            <div id="contenedor-tickets"></div>
+        </div>
     </div>
 
     <script src="app.js"></script>
 </body>
 </html>
-
