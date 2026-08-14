@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const formulario = document.getElementById('form-ticket');
     const contenedorTickets = document.getElementById('contenedor-tickets');
 
-    // Función para mostrar los reportes guardados en localStorage
+    // Función para mostrar la lista de elementos rotos guardados en localStorage
     function mostrarReportes() {
         const tickets = JSON.parse(localStorage.getItem('tickets_escuela')) || [];
         contenedorTickets.innerHTML = '';
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Cargar reportes al iniciar la página
+    // Cargar la lista al abrir la página
     mostrarReportes();
 
     if (formulario) {
@@ -39,26 +39,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Crear el objeto del nuevo reporte
+            // Crear el objeto con lo que se rompió
             const nuevoTicket = {
                 tipo: tipoElemento,
                 descripcion: descripcionTexto,
                 fecha: new Date().toLocaleString()
             };
 
-            // Obtener tickets anteriores de localStorage o array vacío
+            // Guardar estrictamente en el localStorage del navegador
             let tickets = JSON.parse(localStorage.getItem('tickets_escuela')) || [];
-            
-            // Agregar el nuevo ticket al inicio
             tickets.unshift(nuevoTicket);
-
-            // Guardar nuevamente en localStorage
             localStorage.setItem('tickets_escuela', JSON.stringify(tickets));
 
-            alert('¡Reporte guardado con éxito localmente!');
+            alert('¡Reporte guardado con éxito en el almacenamiento local!');
             formulario.reset();
             
-            // Actualizar la lista en pantalla
+            // Actualizar la lista visualmente al instante
             mostrarReportes();
         });
     }
