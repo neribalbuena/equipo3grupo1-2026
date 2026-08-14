@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const formulario = document.getElementById('form-ticket');
     const contenedorTickets = document.getElementById('contenedor-tickets');
 
-    // Función para mostrar la lista de elementos rotos guardados en localStorage
+    // Función para mostrar la lista de elementos y sus botones de acción
     function mostrarReportes() {
         const tickets = JSON.parse(localStorage.getItem('tickets_escuela')) || [];
         contenedorTickets.innerHTML = '';
@@ -14,11 +14,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         tickets.forEach((ticket, index) => {
             const card = document.createElement('div');
-            card.className = 'ticket-card';
+            card.className = `ticket-card ${ticket.reparado ? 'reparado' : ''}`;
+            
             card.innerHTML = `
                 <p><strong>Tipo:</strong> ${ticket.tipo}</p>
-                <p><strong>Descripción:</strong> ${ticket.descripcion}</p>
+                <p class="texto-descripcion"><strong>Descripción:</strong> ${ticket.descripcion}</p>
                 <p style="font-size: 11px; color: #888; margin-top: 5px;">Fecha: ${ticket.fecha}</p>
+                <div class="acciones-tarjeta">
+                    <button class="btn-accion btn-estado" onclick="cambiarEstado(${index})">
+                        ${ticket.reparado ? 'Marcar Pendiente' : 'Marcar Reparado'}
+                    </button>
+                    <button class="btn-accion btn-eliminar" onclick="eliminarTicket(${index})">Eliminar</button>
+                </div>
             `;
             contenedorTickets.appendChild(card);
         });
@@ -29,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (formulario) {
         formulario.addEventListener('submit', (e) => {
-            e.preventDefault(); // Evita que se recargue la página
+            e.preventDefault();
 
             const tipoElemento = document.getElementById('tipo-elemento').value;
             const descripcionTexto = document.getElementById('descripcion').value.trim();
@@ -39,23 +46,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Crear el objeto con lo que se rompió
             const nuevoTicket = {
                 tipo: tipoElemento,
                 descripcion: descripcionTexto,
-                fecha: new Date().toLocaleString()
+                fecha: new Date().toLocaleString(),
+                reparado: false // Empieza como no reparado por defecto
             };
 
-            // Guardar estrictamente en el localStorage del navegador
             let tickets = JSON.parse(localStorage.getItem('tickets_escuela')) || [];
             tickets.unshift(nuevoTicket);
             localStorage.setItem('tickets_escuela', JSON.stringify(tickets));
 
-            alert('¡Reporte guardado con éxito en el almacenamiento local!');
             formulario.reset();
-            
-            // Actualizar la lista visualmente al instante
             mostrarReportes();
         });
     }
 });
+
+// Funciones globales para que los botones interactúen con el localStorage
+window.cambiarEstado = function(index) {
+    let tickets = JSON.parse(localStorage.getItem('tickets_escuela')) || [];
+    tickets[index].reparado = !tickets[index].reparado; // Alterna entre true y false
+    localStorage.setItem('tickets_escuela', JSON.stringify(tickets));
+    
+    // Recargamos la lista visualmente
+    const evento = new Event('DOMContentLoaded');
+    document.dispatchEvent(evento);
+    location.reload(); // Recarga rápida para actualizar la vista de forma segura
+};
+
+window.eliminarTicket = function(index) {
+    if (confirm('¿Estás seguro de que deseas eliminar este reporte?')) {
+        let tickets = JSON.parse(localStorage.getItem('tickets_escuela')) || [];
+        tickets.splice(index, 1); // Borra el elemento seleccionado de la lista
+        localStorage.setItem('tickets_escuela', JSON.stringify(tickets));
+        location.reload();
+    }
+};
+
