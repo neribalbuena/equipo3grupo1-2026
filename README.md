@@ -20,7 +20,7 @@ Algunas notebooks de la escuela tienen fallas y alumnos y profesores no tienen u
 * Gestión de equipo mediante control de versiones en GitHub.
 
 ### 4. Curva S Actualizada
-* **Avance real actual:** ~20% del total.
+* **Avance real actual:** ~40% del total.
 * Ya contamos con la base de datos estructurada, la conexión inicial programada y el frontend capturando datos con JavaScript. El proyecto marcha al día.
 
 para entrar a la página desde internet acceder a:
