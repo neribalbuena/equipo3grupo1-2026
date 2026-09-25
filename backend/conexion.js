@@ -14,7 +14,7 @@ conexion.connect((err) =>{
     return;
   }
 
-                 console.log('Conectado a la base de datos con el ID ' +
+    console.log('Conectado a la base de datos con el ID ' +
                              conexion.threadld);
   });
 
