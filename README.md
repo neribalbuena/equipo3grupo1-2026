@@ -1,28 +1,29 @@
-# equipo3grupo1-2026 -project manager: Balbuena
-Balbuena, Burgos y Barrientos
-Algunas notebooks de la escuela tienen fallas y alumnos y profesores no tienen un canal formal de avisar esto, Entonces este proyecto trata de un software donde cualquier usuario de la escuela pueda reportar una falla en una máquina específica. Luego guardar esos tickets y tener un conteo de los problemas a solucionar
+# equipo3grupo1-2026 - Sistema de Reporte de Fallas para Tótem Escolar
 
+**Integrantes:** Balbuena, Burgos y Barrientos  
+**Escuela:** E.E.S.T. N°1 
 
-## Hito 2 - Alcance y Requerimientos (3 de Julio)
+## De qué trata el proyecto
+En el colegio a veces se rompen notebooks o equipos y no hay un medio rápido para avisar. Por eso armamos este proyecto: un sistema web pensado para usar en un tótem, donde cualquier alumno o profe pueda reportar una falla al toque eligiendo el equipo. Los datos se guardan en una base de datos para que el técnico los pueda ver y marcar si ya se arregló.
 
-### 1. Alcance del Proyecto
-* **Lo que SÍ hace:** Formulario web para reportar fallas en un tótem público, guardado local en MySQL acoplado a un usuario comodín (ID 4), y cambio de estado de tickets por el técnico.
-* **Lo que NO hace:** No maneja aplicación para celulares ni envía correos automáticos.
+---
 
-### 2. Requerimientos Funcionales
-* El sistema debe validar que el campo de texto de la falla no se envíe vacío.
-* Los reportes se deben guardar de forma persistente en la base de datos local.
-* El usuario técnico debe poder actualizar los estados de los tickets ("Pendiente", "En Proceso", "Solucionado").
+## 📌 Estado actual del proyecto
 
-### 3. Requerimientos No Funcionales
-* Interfaz limpia y cómoda para uso rápido en los recreos.
-* Servidor corriendo localmente con Node.js, Express y XAMPP.
-* Gestión de equipo mediante control de versiones en GitHub.
+### 1. Alcance
+* **Lo que hace:** Formulario web para el tótem, conexión con base de datos MySQL para guardar los reportes, un usuario comodín para agilizar la carga sin vueltas, y manejo de estados (Pendiente / Solucionado).
+* **Lo que no hace:** No es una app de celular ni manda mails automáticos.
 
-### 4. Curva S Actualizada
-* **Avance real actual:** ~40% del total.
-* Ya contamos con la base de datos estructurada, la conexión inicial programada y el frontend capturando datos con JavaScript. El proyecto marcha al día.
+### 2. Requerimientos
+* **Funcionales:** El sistema valida que no manden formularios vacíos, guarda todo en la base de datos y el técnico puede actualizar cómo viene cada reparación.
+* **No funcionales:** Interfaz simple para usar rápido, backend con Node.js y Express, y base de datos local con MySQL/XAMPP[span_0](start_span)[span_0](end_span)[span_1](start_span)[span_1](end_span). Todo subido y organizado en este repo de GitHub[span_2](start_span)[span_2](end_span).
 
-para entrar a la página desde internet acceder a:
+### 3. Curva S (Avance)
+* **Avance real:** Venimos por el **58%**. Ya dejamos armada y conectada la base de datos con el backend, y el frontend manda los datos bien. Ahora nos queda encarar las pruebas finales.
 
-https://neribalbuena.github.io/equipo3grupo1-2026/frontend/
+---
+
+## 🔗 Links útiles
+* **Repositorio:** [GitHub - equipo3grupo1-2026](https://github.com/neribalbuena/equipo3grupo1-2026)[span_3](start_span)[span_3](end_span)
+* **Probar la interfaz:** [Ver frontend online](https://neribalbuena.github.io/equipo3grupo1-2026/frontend/)[span_4](start_span)[span_4](end_span)
+
