@@ -16,10 +16,10 @@ En el colegio a veces se rompen notebooks o equipos y no hay un medio rápido pa
 
 ### 2. Requerimientos
 * **Funcionales:** El sistema valida que no manden formularios vacíos, guarda todo en la base de datos y el técnico puede actualizar cómo viene cada reparación.
-* **No funcionales:** Interfaz simple para usar rápido, backend con Node.js y Express, y base de datos local con MySQL/XAMPP[span_0](start_span)[span_0](end_span)[span_1](start_span)[span_1](end_span). Todo subido y organizado en este repo de GitHub[span_2](start_span)[span_2](end_span).
+* **No funcionales:** Interfaz simple para usar rápido, backend con Node.js y Express, y base de datos local con mysql. Todo subido y organizado en este repo de GitHub
 
 ### 3. Curva S (Avance)
-* **Avance real:** Venimos por el **58%**. Ya dejamos armada y conectada la base de datos con el backend, y el frontend manda los datos bien. Ahora nos queda encarar las pruebas finales.
+* **Avance real:** Venimos por el **55%**. Ya dejamos armada y conectada la base de datos con el backend, y el frontend manda los datos bien. Ahora nos queda encarar las pruebas finales.
 
 ---
 
