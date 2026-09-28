@@ -24,6 +24,6 @@ En el colegio a veces se rompen notebooks o equipos y no hay un medio rápido pa
 ---
 
 ## 🔗 Links útiles
-* **Repositorio:** [GitHub - equipo3grupo1-2026](https://github.com/neribalbuena/equipo3grupo1-2026)[span_3](start_span)[span_3](end_span)
-* **Probar la interfaz:** [Ver frontend online](https://neribalbuena.github.io/equipo3grupo1-2026/frontend/)[span_4](start_span)[span_4](end_span)
+* **Repositorio:** [GitHub - equipo3grupo1-2026](https://github.com/neribalbuena/equipo3grupo1-2026)
+* **Probar la interfaz:** [Ver frontend online](https://neribalbuena.github.io/equipo3grupo1-2026/frontend/)
 
