@@ -3,45 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte de Fallas - Tótem Escolar</title>
+    <title>Tótem Escolar - Reporte de Fallas</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Reportar Falla o Rota</h2>
-        <p>Seleccioná el tipo de elemento e ingresá la descripción del problema.</p>
-        
-        <form id="form-ticket">
-            <div class="form-group">
-                <label for="tipo-elemento">Tipo de Elemento:</label>
-                <select id="tipo-elemento" name="tipo-elemento" required>
+
+    <header class="header">
+        <h1>Tótem Escolar - Reportes</h1>
+        <button id="btn-theme" class="btn-theme">🌙 Modo Oscuro</button>
+    </header>
+
+    <main class="container">
+        <!-- VISTA DEL TÓTEM (PÚBLICA) -->
+        <section class="card">
+            <h2>Reportar Falla o Rota</h2>
+            <p>Seleccioná el tipo de elemento e ingresá la descripción del problema.</p>
+
+            <form id="form-ticket">
+                <label for="ubicacion">Tipo de Elemento:</label>
+                <select id="ubicacion" required>
                     <option value="Notebook / Equipo">Notebook / Equipo</option>
-                    <option value="Instrumento Escolar">Instrumento Escolar</option>
-                    <option value="Libro">Libro</option>
-                    <option value="Cargador">Cargador</option>
-                    <option value="Mapa">Mapa</option>
-                    <option value="Zapatilla">Zapatilla</option>
-                    <option value="Calculadora">Calculadora</option>
-                    <option value="Alargue">Alargue</option>
-                    <option value="Televisor"> Televisor</option>
-                    <option value= "Teclado"> Teclado</option>
+                    <option value="Tótem Principal">Tótem Principal</option>
+                    <option value="Proyector / Aula">Proyector / Aula</option>
                 </select>
-            </div>
 
-            <div class="form-group">
                 <label for="descripcion">Descripcion de la falla:</label>
-                <textarea id="descripcion" name="descripcion" rows="4" placeholder="Ej: Pantalla rota, compu bloqueada, etc" required></textarea>
-            </div>
-            
-            <button type="submit" class="btn-enviar">Guardar Reporte</button>
-        </form>
+                <textarea id="descripcion" placeholder="Ej: Pantalla rota, compu bloqueada, etc." required></textarea>
 
-        <div class="lista-reportes">
-            <h3>Elementos Rotos o reportados</h3>
-            <!-- Aquí es donde JavaScript insertará dinámicamente cada tarjeta con sus botones -->
-            <div id="contenedor-tickets"></div>
-        </div>
-    </div>
+                <button type="submit" class="btn-primary">Guardar Reporte</button>
+            </form>
+        </section>
+
+        <!-- LISTADO PÚBLICO DE REPORTES -->
+        <section class="card">
+            <h2>Elementos Rotos o Reportados</h2>
+            <div id="contenedor-tickets">
+                <p style="color: #888;">Cargando reportes...</p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE LOGIN DE ADMINISTRADOR -->
+        <section id="seccion-login" class="card">
+            <h2>Acceso Administrador</h2>
+            <form id="form-login">
+                <input type="text" id="login-user" placeholder="Usuario (admin)" required />
+                <input type="password" id="login-pass" placeholder="Contraseña (1234)" required />
+                <button type="submit" class="btn-secondary">Ingresar como Admin</button>
+            </form>
+        </section>
+
+        <!-- PANEL DE CONTROL ADMIN (OCULTO POR DEFECTO) -->
+        <section id="panel-admin" class="card" style="display: none;">
+            <div class="admin-header">
+                <h2>Panel de Control Técnico</h2>
+                <button id="btn-logout" class="btn-danger">Cerrar Sesión</button>
+            </div>
+            <p>Desde acá podés cambiar el estado de los reportes:</p>
+            <div id="contenedor-admin-tickets"></div>
+        </section>
+    </main>
 
     <script src="app.js"></script>
 </body>
