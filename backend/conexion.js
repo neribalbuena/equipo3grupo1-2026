@@ -1,28 +1,18 @@
-const mysql = require('mysql2');
+const { Pool } = require('pg');
 
-const conexion = mysql.createConnection({
-    host: process.env.DB_HOST || 'localhost',
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || '',
-    database: process.env.DB_NAME || 'sistema_totem'
+const conexion = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
-conexion.connect((err) => {
+conexion.connect((err, client, release) => {
     if (err) {
-        console.error(' Error al conectar con MySQL:', err.message);
-        return;
+        return console.error('Error al conectar con la base de datos:', err.stack);
     }
-    console.log(' Conectado a la base de datos MySQL con el ID:', conexion.threadId);
-});
-
-// Esto evita que la aplicación se rompa con un stack trace gigante si hay un corte
-conexion.on('error', (err) => {
-    console.error(' Error en la conexión de MySQL:', err);
-    if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-        console.error('La conexión con la base de datos fue cerrada.');
-    } else {
-        throw err;
-    }
+    console.log('Conectado exitosamente a la base de datos en Supabase (PostgreSQL)');
+    release();
 });
 
 module.exports = conexion;
