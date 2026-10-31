@@ -1,4 +1,4 @@
-const API_URL = 'https://equipo3.onrender.com/api';
+const API_URL = 'https://equipo3grupo1-2026.onrender.com/api';
 
 document.addEventListener('DOMContentLoaded', () => {
     const btnTheme = document.getElementById('btn-theme');
