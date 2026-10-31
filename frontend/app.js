@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const respuesta = await fetch(`${API_URL}/tickets`);
+            if (!respuesta.ok) throw new Error(`Error ${respuesta.status}`);
             const tickets = await respuesta.json();
 
             contenedorTickets.innerHTML = '';
