@@ -12,15 +12,16 @@ app.use(express.urlencoded({ extended: true }));
 
 // RUTA (POST): Registro de nuevos tickets desde el tótem
 app.post('/api/tickets', (req, res) => {
-    const { id_usuario, descripcion_problema } = req.body;
+    const { ubicacion, descripcion_problema } = req.body;
 
     if (!descripcion_problema) {
         return res.status(400).json({ error: 'La descripción del problema es obligatoria.' });
     }
 
-    const query = 'INSERT INTO tickets (id_usuario, descripcion_problema, estado) VALUES (?, ?, "Pendiente")';
+    const ubicacionFinal = ubicacion || 'Tótem Principal';
+    const query = 'INSERT INTO tickets (ubicacion, descripcion_problema, estado) VALUES (?, ?, "Pendiente")';
     
-    db.query(query, [id_usuario || 4, descripcion_problema], (err, resultado) => {
+    db.query(query, [ubicacionFinal, descripcion_problema], (err, resultado) => {
         if (err) {
             console.error('Error al guardar el ticket en MySQL:', err);
             return res.status(500).json({ error: 'Error interno en la base de datos.' });
@@ -28,7 +29,7 @@ app.post('/api/tickets', (req, res) => {
 
         console.log(`Ticket guardado con ID: ${resultado.insertId}`);
         res.status(201).json({ 
-            mensaje: 'Ticket en espera de procesamiento', 
+            mensaje: 'Ticket registrado con éxito', 
             id_ticket: resultado.insertId 
         });
     });
@@ -70,7 +71,61 @@ app.post('/api/login', (req, res) => {
         }
     });
 });
+// RUTA (PATCH): Actualizar estado del ticket
+app.patch('/api/tickets/:id', (req, res) => {
+    const { id } = req.params;
+    const { estado } = req.body;
+
+    const query = 'UPDATE tickets SET estado = ? WHERE id = ?';
+    db.query(query, [estado, id], (err, resultado) => {
+        if (err) {
+            console.error('Error al actualizar estado:', err);
+            return res.status(500).json({ error: 'Error al actualizar el ticket' });
+        }
+        res.status(200).json({ mensaje: 'Estado actualizado correctamente' });
+    });
+});
+
+// RUTA (DELETE): Eliminar un ticket
+app.delete('/api/tickets/:id', (req, res) => {
+    const { id } = req.params;
+
+    const query = 'DELETE FROM tickets WHERE id = ?';
+    db.query(query, [id], (err, resultado) => {
+        if (err) {
+            console.error('Error al eliminar ticket:', err);
+            return res.status(500).json({ error: 'Error al eliminar el ticket' });
+        }
+        res.status(200).json({ mensaje: 'Ticket eliminado correctamente' });
+    });
+});
 
 app.listen(PORT, () => {
     console.log(`Servidor listo y corriendo en el puerto ${PORT}`);
+});
+// RUTA (PATCH): Actualizar estado de ticket desde el panel técnico
+app.patch('/api/tickets/:id', (req, res) => {
+    const { id } = req.params;
+    const { estado } = req.body;
+
+    const query = 'UPDATE tickets SET estado = ? WHERE id = ?';
+    db.query(query, [estado, id], (err, resultado) => {
+        if (err) {
+            console.error('Error al actualizar estado:', err);
+            return res.status(500).json({ error: 'Error al actualizar el ticket' });
+        }
+        res.status(200).json({ mensaje: 'Estado actualizado correctamente' });
+    });
+});
+// RUTA (DELETE): Eliminar un ticket desde el panel admin
+app.delete('/api/tickets/:id', (req, res) => {
+    const { id } = req.params;
+    const query = 'DELETE FROM tickets WHERE id = ?';
+    db.query(query, [id], (err, resultado) => {
+        if (err) {
+            console.error('Error al eliminar ticket:', err);
+            return res.status(500).json({ error: 'Error al eliminar el ticket' });
+        }
+        res.status(200).json({ mensaje: 'Ticket eliminado correctamente' });
+    });
 });

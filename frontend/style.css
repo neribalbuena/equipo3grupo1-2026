@@ -1,140 +1,119 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+:root {
+    --bg-color: #f4f6f9;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --border-color: #dddddd;
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+}
+
+body.dark-mode {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-color: #e0e0e0;
+    --border-color: #333333;
+    --primary-color: #375a7f;
+    --primary-hover: #2b4764;
 }
 
 body {
-    background-color: #f4f6f9;
-    color: #333;
-    display: flex;
-    justify-content: center;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+    font-family: Arial, sans-serif;
+    margin: 0;
     padding: 20px;
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+}
+
 .container {
-    background: #ffffff;
-    width: 100%;
-    max-width: 500px;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-h2 {
-    margin-bottom: 10px;
-    color: #2c3e50;
-    font-size: 24px;
-}
-
-p {
-    font-size: 14px;
-    color: #666;
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 8px;
     margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-.form-group {
-    margin-bottom: 15px;
+.card h2 {
+    margin-top: 0;
 }
 
-label {
+form label {
     display: block;
+    margin-top: 10px;
     margin-bottom: 5px;
     font-weight: bold;
-    font-size: 14px;
 }
 
-select, textarea {
+form input, form select, form textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-select:focus, textarea:focus {
-    border-color: #3498db;
-    outline: none;
-}
-
-.btn-enviar {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    padding: 12px;
-    width: 100%;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s ease;
-}
-
-.btn-enviar:hover {
-    background-color: #2980b9;
-}
-
-.lista-reportes {
-    margin-top: 30px;
-    border-top: 1px solid #eee;
-    padding-top: 20px;
-}
-
-.lista-reportes h3 {
-    font-size: 18px;
-    color: #2c3e50;
     margin-bottom: 10px;
+    box-sizing: border-box;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+button {
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-theme {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #28a745;
+    color: white;
+    width: 100%;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
 }
 
 .ticket-card {
-    background: #f9f9f9;
-    border-left: 4px solid #e74c3c;
-    padding: 12px 15px;
+    border-left: 4px solid var(--primary-color);
+    padding: 12px;
     margin-bottom: 12px;
+    background: rgba(0,0,0,0.02);
     border-radius: 4px;
-    font-size: 13px;
-    position: relative;
 }
 
-.ticket-card.reparado {
-    border-left-color: #2ecc71;
-    background: #eafaf1;
-}
-
-.ticket-card.reparado .texto-descripcion {
-    text-decoration: line-through;
-    color: #7f8c8d;
-}
-
-.acciones-tarjeta {
-    margin-top: 10px;
+.admin-header {
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
-
-.btn-accion {
-    padding: 6px 10px;
-    border: none;
-    border-radius: 4px;
-    font-size: 12px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.btn-estado {
-    background-color: #f39c12;
-    color: white;
-}
-
-.ticket-card.reparado .btn-estado {
-    background-color: #2ecc71;
-}
-
-.btn-eliminar {
-    background-color: #e74c3c;
-    color: white;
-}
-
- 
-

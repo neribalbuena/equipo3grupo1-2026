@@ -1,18 +1,18 @@
-const mysql = require('mysql2');
+const { Pool } = require('pg');
 
-const conexion = mysql.createConnection({
-    host: process.env.DB_HOST || 'localhost',
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || '',
-    database: process.env.DB_NAME || 'sistema_totem'
+const conexion = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
-conexion.connect((err) => {
+conexion.connect((err, client, release) => {
     if (err) {
-        console.error('Error al conectar a la base de datos: ' + err.stack);
-        return;
+        return console.error('Error al conectar con la base de datos:', err.stack);
     }
-    console.log('Conectado a la base de datos con el ID ' + conexion.threadId);
+    console.log('Conectado exitosamente a la base de datos en Supabase (PostgreSQL)');
+    release();
 });
 
 module.exports = conexion;
