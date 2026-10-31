@@ -19,9 +19,9 @@ app.post('/api/tickets', (req, res) => {
     }
 
     const ubicacionFinal = ubicacion || 'Tótem Principal';
-    const query = 'INSERT INTO tickets (ubicacion, descripcion_problema, estado) VALUES (?, ?, "Pendiente")';
+    const query = 'INSERT INTO tickets (ubicacion, descripcion_problema, estado) VALUES ($1, $2, $3)';
     
-    db.query(query, [ubicacionFinal, descripcion_problema], (err, resultado) => {
+    db.query(query, [ubicacionFinal, descripcion_problema, 'Pendiente'], (err, resultado) => {
         if (err) {
             console.error('Error al guardar el ticket:', err);
             return res.status(500).json({ error: 'Error interno en la base de datos.' });
@@ -43,7 +43,7 @@ app.get('/api/tickets', (req, res) => {
             console.error('Error al consultar los tickets:', err);
             return res.status(500).json({ error: 'Error al obtener los tickets.' });
         }
-        res.status(200).json(resultados);
+        res.status(200).json(resultados.rows);
     });
 });
 
@@ -55,7 +55,7 @@ app.post('/api/login', (req, res) => {
         return res.status(400).json({ error: 'Email y contraseña obligatorios.' });
     }
 
-    const query = 'SELECT * FROM usuarios WHERE email = ? AND password = ?';
+    const query = 'SELECT * FROM usuarios WHERE email = $1 AND password = $2';
     
     db.query(query, [email, password], (err, resultados) => {
         if (err) {
@@ -63,8 +63,8 @@ app.post('/api/login', (req, res) => {
             return res.status(500).json({ error: 'Error en el servidor' });
         }
 
-        if (resultados.length > 0) {
-            res.status(200).json({ mensaje: 'Login exitoso', usuario: resultados[0] });
+        if (resultados.rows.length > 0) {
+            res.status(200).json({ mensaje: 'Login exitoso', usuario: resultados.rows[0] });
         } else {
             res.status(401).json({ error: 'Credenciales incorrectas' });
         }
@@ -76,7 +76,7 @@ app.patch('/api/tickets/:id', (req, res) => {
     const { id } = req.params;
     const { estado } = req.body;
 
-    const query = 'UPDATE tickets SET estado = ? WHERE id = ?';
+    const query = 'UPDATE tickets SET estado = $1 WHERE id = $2';
     db.query(query, [estado, id], (err, resultado) => {
         if (err) {
             console.error('Error al actualizar estado:', err);
@@ -90,7 +90,7 @@ app.patch('/api/tickets/:id', (req, res) => {
 app.delete('/api/tickets/:id', (req, res) => {
     const { id } = req.params;
 
-    const query = 'DELETE FROM tickets WHERE id = ?';
+    const query = 'DELETE FROM tickets WHERE id = $1';
     db.query(query, [id], (err, resultado) => {
         if (err) {
             console.error('Error al eliminar ticket:', err);
