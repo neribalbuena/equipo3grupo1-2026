@@ -1,4 +1,4 @@
-# equipo3grupo1-2026 - Sistema de Reporte de Fallas para Tótem Escolar
+# equipo3grupo1-2026 - Sistema de Reporte de Fallas para Tótem Escolar V. 1.1
 
 **Integrantes:** Balbuena, Burgos y Barrientos  
 **Escuela:** E.E.S.T. N°1 
@@ -8,7 +8,7 @@ En el colegio a veces se rompen notebooks o equipos y no hay un medio rápido pa
 
 ---
 
-## 📌 Estado actual del proyecto
+##  Estado actual del proyecto
 
 ### 1. Alcance
 * **Lo que hace:** Formulario web para el tótem, conexión con base de datos MySQL para guardar los reportes, un usuario comodín para agilizar la carga sin vueltas, y manejo de estados (Pendiente / Solucionado).
